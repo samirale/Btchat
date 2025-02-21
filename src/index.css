@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-black text-green-500;
+    font-family: 'Courier New', monospace;
+  }
+}
+
+.matrix-bg {
+  background-color: rgba(0, 0, 0, 0.9);
+  background-image: linear-gradient(
+    rgba(0, 255, 0, 0.05) 1px,
+    transparent 1px
+  );
+  background-size: 100% 2px;
+}
+
+.glow {
+  text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
+}
+
+.input-matrix {
+  @apply bg-black/50 border border-green-500/50 text-green-500 focus:ring-green-500 focus:border-green-500;
+}
+
+.btn-matrix {
+  @apply bg-green-500/20 hover:bg-green-500/30 text-green-500 border border-green-500
+         px-4 py-2 rounded transition-all duration-300 hover:shadow-[0_0_15px_rgba(0,255,0,0.5)]
+         flex items-center justify-center;
+}
+
+/* Mobile Chat Sidebar */
+@media (max-width: 768px) {
+  .chat-container {
+    @apply relative;
+  }
+
+  .chat-sidebar {
+    @apply fixed inset-0 z-30 transform transition-transform duration-300 ease-in-out;
+  }
+
+  .chat-sidebar.hidden {
+    @apply -translate-x-full;
+  }
+
+  .chat-sidebar.visible {
+    @apply translate-x-0;
+  }
+
+  .chat-main {
+    @apply w-full;
+  }
+
+  .mobile-overlay {
+    @apply fixed inset-0 bg-black/50 z-20;
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 0, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 0, 0.5);
+}
+
+/* Mobile Optimizations */
+@media (max-width: 640px) {
+  .input-matrix, .btn-matrix {
+    @apply text-sm;
+  }
+
+  .container {
+    @apply px-4;
+  }
+}
+
+/* Screenshot Protection */
+.screenshot-protected {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out forwards;
+}
